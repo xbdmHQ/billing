@@ -1,0 +1,3 @@
+billing.localhost {
+  reverse_proxy localhost:3000
+}
