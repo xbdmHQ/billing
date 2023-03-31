@@ -31,6 +31,7 @@
     "mongoose": "^6.9.1",
     "morgan": "^1.10.0",
     "nanoid": "^4.0.1",
+    "stripe": "^11.16.0",
     "validator": "^13.9.0"
   },
   "devDependencies": {

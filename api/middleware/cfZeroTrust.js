@@ -15,7 +15,13 @@ const jwks = jwksClient({
   jwksUri: certsURL
 });
 
-const verifyToken = (req, res, next) => {
+module.exports = (req, res, next) => {
+  // skip if not in production
+  if (process.env.NODE_ENV !== 'production') {
+    next();
+    return;
+  }
+
   const accessJWT = req.headers['cf-access-jwt-assertion'];
   if (!accessJWT) {
     res.status(401).send('No token provided in header');
@@ -61,5 +67,3 @@ const verifyToken = (req, res, next) => {
     }
   );
 };
-
-module.exports = verifyToken;

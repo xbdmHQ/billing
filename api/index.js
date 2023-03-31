@@ -41,7 +41,7 @@ mongoose.connection.on('error', err => {
  * Express configuration.
  */
 app.set('host', process.env.IP || '127.0.0.1');
-app.set('port', process.env.PORT || 8080);
+app.set('port', process.env.PORT || 3030);
 app.use(lusca.xframe('SAMEORIGIN'));
 app.use(lusca.xssProtection(true));
 lusca.referrerPolicy('same-origin');
@@ -73,8 +73,8 @@ switch (process.env.NODE_ENV) {
 /**
  * Primary app routes.
  */
-app.use('/api', require('./routes/api'));
-app.use('/api/admin', cfZeroTrust, require('./routes/api/admin'));
+app.use('/', require('./routes'));
+app.use('/admin/import', cfZeroTrust, require('./routes/admin/import'));
 
 /**
  * Handle 404 errors.
